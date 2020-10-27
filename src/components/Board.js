@@ -1,5 +1,5 @@
 import "./board.css";
-import React, { useState } from "react";
+import React from "react";
 import Square from "./Square";
 
 export default function Board(props) {

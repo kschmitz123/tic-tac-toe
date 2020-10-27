@@ -1,5 +1,5 @@
 import "./game.css";
-import React, { useState, jumpTo, useReducer } from "react";
+import React, { useState } from "react";
 import Board from "./Board";
 
 export default function Game() {
@@ -10,7 +10,7 @@ export default function Game() {
   function handleClick(index) {
     const currentHistory = history.slice(0, stepNumber + 1);
     const currentStep = currentHistory[currentHistory.length - 1];
-    const squares = current.squares.slice();
+    const squares = currentStep.squares.slice();
     if (calculateWinner(squares) || squares[index]) {
       return;
     }
