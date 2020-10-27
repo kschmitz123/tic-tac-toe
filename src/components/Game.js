@@ -1,11 +1,12 @@
 import "./game.css";
 import React, { useState } from "react";
 import Board from "./Board";
+import { getRandomPlayer } from "../utils/game";
 
 export default function Game() {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [stepNumber, setStepNumber] = useState(0);
-  const [nextPlayer, setNextPlayer] = useState("🐧");
+  const [nextPlayer, setNextPlayer] = useState(getRandomPlayer());
 
   function handleClick(index) {
     const currentHistory = history.slice(0, stepNumber + 1);
