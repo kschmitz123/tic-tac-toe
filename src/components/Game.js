@@ -5,7 +5,7 @@ import Board from "./Board";
 export default function Game() {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [stepNumber, setStepNumber] = useState(0);
-  const [xIsNext, setXIsNext] = useState(true);
+  const [nextPlayer, setNextPlayer] = useState("🐧");
 
   function handleClick(index) {
     const currentHistory = history.slice(0, stepNumber + 1);
@@ -14,16 +14,16 @@ export default function Game() {
     if (calculateWinner(squares) || squares[index]) {
       return;
     }
-    squares[index] = xIsNext ? "🐧" : "🐻";
+    squares[index] = nextPlayer;
 
     setHistory(currentHistory.concat([{ squares: squares }]));
     setStepNumber(currentHistory.length);
-    setXIsNext(!xIsNext);
+    setNextPlayer(nextPlayer === "🐧" ? "🐻" : "🐧");
   }
 
   function jumpTo(step) {
     setStepNumber(step);
-    setXIsNext(step % 2 === 0);
+    setNextPlayer(step % 2 === 0);
   }
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
@@ -37,12 +37,7 @@ export default function Game() {
     );
   });
 
-  let status;
-  if (winner) {
-    status = "Winner: " + winner;
-  } else {
-    status = "Next Player: " + (xIsNext ? "🐧" : "🐻");
-  }
+  const status = winner ? `Winner: ${winner}` : `Next Player: ${nextPlayer}`;
 
   return (
     <div className="game">
