@@ -1,6 +1,7 @@
 .board {
   border-radius: 22px;
   background: #d6bc46;
+  width: 240px;
   box-shadow: -12px -12px 20px #a59136, 12px 12px 20px #ffe756;
 }
 
@@ -13,7 +14,4 @@
 .status {
   margin-bottom: 10px;
   font-size: 2rem;
-}
-.board-row {
-  width: 240px;
 }

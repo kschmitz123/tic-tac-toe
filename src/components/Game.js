@@ -46,6 +46,9 @@ export default function Game() {
 
   return (
     <div className="game">
+      <div>
+        <div className="status">{status}</div>
+      </div>
       <div className="game-board">
         <Board
           squares={current.squares}
@@ -53,7 +56,6 @@ export default function Game() {
         />
       </div>
       <div className="game-info">
-        <div className="status">{status}</div>
         <ol>{moves}</ol>
       </div>
     </div>
