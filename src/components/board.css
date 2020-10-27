@@ -1,3 +1,9 @@
+.board {
+  border-radius: 22px;
+  background: #d6bc46;
+  box-shadow: -12px -12px 20px #a59136, 12px 12px 20px #ffe756;
+}
+
 .board-row:after {
   clear: both;
   content: "";
@@ -6,4 +12,8 @@
 
 .status {
   margin-bottom: 10px;
+  font-size: 2rem;
+}
+.board-row {
+  width: 240px;
 }
