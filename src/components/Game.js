@@ -1,5 +1,5 @@
 import "./game.css";
-import React, { useState } from "react";
+import React, { useState, jumpTo } from "react";
 import Board from "./Board";
 
 export default function Game() {
@@ -21,6 +21,15 @@ export default function Game() {
   const current = history[history.length - 1];
   const winner = calculateWinner(current.squares);
 
+  const moves = history.map((step, move) => {
+    const desc = move ? "Go to move #" + move : "Go to game start";
+    return (
+      <li key="abcde">
+        <button onClick={() => jumpTo(move)}>{desc}</button>
+      </li>
+    );
+  });
+
   let status;
   if (winner) {
     status = "Winner: " + winner;
@@ -38,7 +47,7 @@ export default function Game() {
       </div>
       <div className="game-info">
         <div className="status">{status}</div>
-        <ol>{/* TODO */}</ol>
+        <ol>{moves}</ol>
       </div>
     </div>
   );
